@@ -1,0 +1,10 @@
+FROM        python:3.6.5-slim
+MAINTAINER  blessmht@gmial.com
+
+# uWSGI는 pipfile에 기록
+RUN         apt - y update && -y dist-upgrade
+
+# 로컬의 requirements.txt파일을 /srv에 복사 후 pip install실행
+# (build하는 환경에 requirements.txt가 있어야 함)
+COPY        ./requirments.txt   /srv/
+RUN         pip install -r /srv/requirments.txt
